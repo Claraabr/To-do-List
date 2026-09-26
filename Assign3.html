@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>The Agenda | Task Manager</title>
+
+  <link rel="stylesheet" href="style.css">
+  <script src="scriptAssign3.js" defer></script>
+</head>
+
+<body>
+
+  <main class="todo-container">
+
+    <header class="app-header">
+        <div>
+          <h1>The Agenda.</h1>
+          <p class="subtitle">Build the plan. Execute with confidence.</p>
+        </div>
+
+      <section class="dashboard" aria-label="Task progress">
+        <div class="progress-card">
+          <div class="progress-heading">
+            <span>Daily progress</span>
+            <strong id="progressText">0%</strong>
+          </div>
+
+          <div class="progress-track">
+            <div class="progress-bar" id="progressBar"></div>
+          </div>
+        </div>
+
+        <div class="stats">
+          <div class="stat">
+            <strong id="totalCount">0</strong>
+            <span>Total</span>
+          </div>
+
+          <div class="stat">
+            <strong id="completedCount">0</strong>
+            <span>Completed</span>
+          </div>
+
+          <div class="stat">
+            <strong id="remainingCount">0</strong>
+            <span>Forthcoming</span>
+          </div>
+        </div>
+      </section>
+    </header>
+
+    <section class="workspace">
+      <div class="workspace-heading">
+        <div>
+          <p class="workspace-label">Task queue</p>
+          <h2>Task overview</h2>
+        </div>
+      </div>
+
+      <form id="taskForm">
+        <label class="sr-only" for="taskInput">New task</label>
+        <input
+          type="text"
+          id="taskInput"
+          placeholder="Add a new task..."
+          autocomplete="off"
+        >
+
+        <!-- Optional deadline: leave it empty for a task with no date -->
+        <label class="sr-only" for="dueDateInput">Due date (optional)</label>
+        <input
+          type="datetime-local"
+          id="dueDateInput"
+          title="Due date (optional)"
+        >
+
+        <button type="submit">
+          Add task <span aria-hidden="true">&#8599;</span>
+        </button>
+      </form>
+
+      <p id="message" aria-live="polite"></p>
+
+      <!-- data-filter tells JavaScript which tasks each button shows -->
+      <div class="filters" id="filters" role="group" aria-label="Filter tasks">
+        <button type="button" class="filter-button active" data-filter="all" aria-pressed="true">
+          All <span class="filter-count" data-count="all">0</span>
+        </button>
+        <button type="button" class="filter-button" data-filter="active" aria-pressed="false">
+          Forthcoming <span class="filter-count" data-count="active">0</span>
+        </button>
+        <button type="button" class="filter-button" data-filter="completed" aria-pressed="false">
+          Completed <span class="filter-count" data-count="completed">0</span>
+        </button>
+        <button type="button" class="filter-button" data-filter="soon" aria-pressed="false">
+          Due in 24h <span class="filter-count" data-count="soon">0</span>
+        </button>
+        <button type="button" class="filter-button" data-filter="overdue" aria-pressed="false">
+          Overdue <span class="filter-count" data-count="overdue">0</span>
+        </button>
+      </div>
+
+      <!-- JavaScript creates every task inside this list. -->
+      <ul id="taskList"></ul>
+    </section>
+
+    <footer class="app-footer">
+      <span>The Agenda</span>
+      <span>Focus · Execute · Complete</span>
+    </footer>
+
+  </main>
+
+</body>
+</html>
