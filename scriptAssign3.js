@@ -68,7 +68,7 @@ function addTask(event) {
   }
 
   // A new deadline cannot already be in the past
-  if (dueDate && new Date(dueDate).getTime() < Date.now-ONE_MINUTE()) {
+  if (dueDate && new Date(dueDate).getTime() < Date.now() - ONE_MINUTE) {
     showMessage("That due date has already passed, pick a future time.", "error");
     return;
   }
