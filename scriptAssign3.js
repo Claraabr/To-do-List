@@ -58,7 +58,7 @@ function addTask(event) {
   // trim() removes spaces from the beginning and end
   const taskText = taskInput.value.trim();
 
-  // The date is optional, so an empty value becomes null
+  // The date is optional so an empty value becomes null
   const dueDate = dueDateInput.value || null;
 
   // Reject empty or whitespace-only input
@@ -85,7 +85,6 @@ function addTask(event) {
   saveTasks();
   setFilter("all");
 
-  // Clear the inputs and show encouraging feedback
   taskForm.reset();
   showMessage("Task added", "success");
 
@@ -157,7 +156,7 @@ function getDueText(task) {
   return `Due ${dateText} · ${formatDuration(timeLeft)} left`;
 }
 
-// Decides if a task should be visible under the selected filter
+// Decides if a task should be visible or not under the selected filter
 function matchesFilter(task, filter) {
   const status = getDueStatus(task);
 
@@ -177,7 +176,7 @@ function matchesFilter(task, filter) {
     return status === "overdue";
   }
 
-  // "all"
+  // the last filter is "all"
   return true;
 }
 
@@ -203,7 +202,7 @@ function renderTasks(animate = true) {
   }
 
   visibleTasks.forEach((task) => {
-    const listItem = document.createElement("li");
+    const listItem = document.createElement("li"); //makes a new element in memory
     const taskButton = document.createElement("button");
     const taskBody = document.createElement("span");
     const taskTitle = document.createElement("span");
@@ -216,7 +215,6 @@ function renderTasks(animate = true) {
       listItem.classList.add("completed");
     }
 
-    // Adds a class like "due-overdue" or "due-soon" for colouring
     listItem.classList.add(`due-${getDueStatus(task)}`);
 
     taskButton.classList.add("task-text");
